@@ -32,6 +32,8 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "https://ai-document-assistant-seven.vercel.app",
+        "https://ai-document-assistant-git-main-atharvd-2474s-projects.vercel.app",
+        "https://ai-document-assistant-8x2gf14n5-atharvd-2474s-projects.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
