@@ -31,7 +31,7 @@ This architecture is commonly used in modern:
 ## 🏗️ System Architecture
 
 The application follows a **Retrieval-Augmented Generation (RAG)** architecture:
-
+```
 User
 │
 │  Upload Document
@@ -65,7 +65,7 @@ Generated Answer
 │
 ▼
 React Frontend (Streaming Response + Sources)
-
+```
 
 
 ---
@@ -121,7 +121,7 @@ Professional chat interface with evidence panels and document upload workflow.
 ---
 
 ## 📁 Project Structure
-
+```
 ai_document_assistant
 │
 ├── backend
@@ -144,6 +144,7 @@ ai_document_assistant
 │   └── package.json         # Frontend dependencies
 │
 └── README.md
+```
 
 
 
