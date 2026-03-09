@@ -30,18 +30,45 @@ This architecture is commonly used in modern:
 
 # Architecture
 
-The system follows a **Retrieval Augmented Generation pipeline**.
-User Question
-↓
-Generate Query Embedding
-↓
-Vector Search (FAISS)
-↓
-Retrieve Top-K Document Chunks
-↓
-Pass Context + Question to LLM
-↓
-Stream Response to UI
+User
+│
+├─ Upload Document
+│
+▼
+FastAPI Backend
+│
+├─ Extract Text from PDF
+│
+├─ Chunk Document into Smaller Sections
+│
+├─ Generate Vector Embeddings (OpenAI)
+│
+▼
+Vector Store (FAISS)
+│   └─ Stores semantic representations for fast retrieval
+│
+│────────────────────────────────────
+│
+├─ User Asks a Question
+│
+├─ Generate Query Embedding
+│
+├─ Perform Vector Similarity Search
+│
+▼
+Top-K Most Relevant Chunks Retrieved
+│
+├─ Provide Context to LLM
+│
+▼
+OpenAI LLM
+│
+├─ Generates Grounded Answer
+│
+▼
+React Frontend
+    ├─ Streams Response in Real Time
+    └─ Displays Source References
 
 
 ---
