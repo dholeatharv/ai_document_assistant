@@ -28,47 +28,44 @@ This architecture is commonly used in modern:
 
 ---
 
-# Architecture
+## 🏗️ System Architecture
+
+The application follows a **Retrieval-Augmented Generation (RAG)** architecture:
 
 User
 │
-├─ Upload Document
-│
+│  Upload Document
 ▼
 FastAPI Backend
 │
-├─ Extract Text from PDF
+│  Extract Text
+▼
+Document Chunking
 │
-├─ Chunk Document into Smaller Sections
-│
-├─ Generate Vector Embeddings (OpenAI)
-│
+│  Generate Embeddings
 ▼
 Vector Store (FAISS)
-│   └─ Stores semantic representations for fast retrieval
 │
-│────────────────────────────────────
 │
-├─ User Asks a Question
-│
-├─ Generate Query Embedding
-│
-├─ Perform Vector Similarity Search
+│  User Question
+▼
+Query Embedding
 │
 ▼
-Top-K Most Relevant Chunks Retrieved
-│
-├─ Provide Context to LLM
+Vector Similarity Search
 │
 ▼
-OpenAI LLM
-│
-├─ Generates Grounded Answer
+Top-K Relevant Chunks
 │
 ▼
-React Frontend
-    ├─ Streams Response in Real Time
-    └─ Displays Source References
+LLM (OpenAI API)
+│
+▼
+Generated Answer
+│
+▼
+React Frontend (Streaming Response + Sources)
+
 
 
 ---
@@ -123,28 +120,31 @@ Professional chat interface with evidence panels and document upload workflow.
 
 ---
 
-# Project Structure
+## 📁 Project Structure
+
 ai_document_assistant
 │
 ├── backend
-│ ├── main.py
-│ ├── rag.py
-│ ├── vector_store.py
-│ ├── embeddings.py
-│ ├── pdf_utils.py
-│ ├── storage.py
-│ ├── schemas.py
-│ └── requirements.txt
+│   ├── main.py              # FastAPI entry point and API routes
+│   ├── rag.py               # Retrieval-Augmented Generation pipeline
+│   ├── vector_store.py      # FAISS vector indexing and similarity search
+│   ├── embeddings.py        # OpenAI embedding generation
+│   ├── pdf_utils.py         # PDF text extraction utilities
+│   ├── storage.py           # Document persistence layer
+│   ├── schemas.py           # Pydantic request/response models
+│   └── requirements.txt     # Python dependencies
 │
 ├── frontend
-│ ├── src
-│ │ ├── App.jsx
-│ │ ├── main.jsx
-│ │ └── index.css
-│ ├── vite.config.js
-│ └── package.json
+│   ├── src
+│   │   ├── App.jsx          # Main React UI application
+│   │   ├── main.jsx         # React entry point
+│   │   └── index.css        # TailwindCSS styling
+│   │
+│   ├── vite.config.js       # Vite configuration
+│   └── package.json         # Frontend dependencies
 │
 └── README.md
+
 
 
 ---
